@@ -42,6 +42,8 @@ func main() {
 	fmt.Printf("Complex128: %v\n", c128)
 
 	// String
+	// with double quotes i cannot print the string in multiple lines
+	// with backticks i can print the string in multiple lines
 	var s string = "Hello, World!"
 	fmt.Printf("String: %v\n", s)
 }
