@@ -3,10 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	fruits := []string{"Apple", "Banana", "Cherry"}
-	fmt.Printf("Before append, length = %v and capacity = %v\n", len(fruits), cap(fruits))
+	// create a slice with make()
+	slice := make([]int, 1, 8)
+	fmt.Println("Slice:", slice)
+	fmt.Println("Length:", len(slice))
+	fmt.Println("Capacity:", cap(slice))
 
-	fruits = append(fruits, "Date")
-	fmt.Printf("After append, length = %v and capacity = %v", len(fruits), cap(fruits))
-
+	// append elements to the slice
+	slice = append(slice, 1, 2, 3)
+	fmt.Println("Slice:", slice)
+	fmt.Println("Length:", len(slice))
+	fmt.Println("Capacity:", cap(slice))
 }
