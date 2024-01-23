@@ -3,28 +3,33 @@ package main
 import "fmt"
 
 func main() {
-	var ages map[string]int = make(map[string]int)
-	ages["Alice"] = 30
-	ages["Alex"] = 25
-	ages["Bob"] = 23
+	scores := make(map[string]uint)
 
-	// access a map element
-	var age1 = ages["Alice"]
-	fmt.Printf("Alice is %d years old\n", age1)
+	scores["maths"] = 100
+	scores["science"] = 98
+	scores["nepali"] = 90
 
-	// loop through a map
-	for name, age := range ages {
-		fmt.Printf("%v\t%v\n", name, age)
-	}
+	fmt.Println("Scores Map: ", scores)
 
-	// delete a map element
-	delete(ages, "Alice")
+	// add an element to the map
+	scores["english"] = 95
+	fmt.Println("Scores Map: ", scores)
 
-	// check if a map element exists
-	var age2, ok = ages["Alice"]
-	if ok {
-		fmt.Printf("Alice is %d years old\n", age2)
+	// delete an element from the map
+	delete(scores, "nepali")
+	fmt.Println("Scores Map: ", scores)
+
+	// update an element in the map
+	scores["maths"] = 99
+	fmt.Println("Scores Map: ", scores)
+
+	// check if an element exists in the map
+	score, exists := scores["geography"]
+
+	if !exists {
+		fmt.Println("Geography score not found")
 	} else {
-		fmt.Println("Alice not found")
+		fmt.Println("Geography score: ", score)
 	}
+
 }
