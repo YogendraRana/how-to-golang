@@ -3,22 +3,27 @@ package main
 import "fmt"
 
 type Person struct {
-	Name string
-	Age  int
+	Name    string
+	Age     uint
+	Address string
+}
+
+// Define the GetName method for the Person type
+// this method has a receiver of type Person
+// this method can be called with any instance of Person
+func (p Person) GetName() string {
+	return p.Name
 }
 
 func main() {
-	var Alex Person = Person{
-		Name: "Alex",
-		Age:  20,
+	yogendra := Person{
+		Name:    "Yogendra",
+		Age:     25,
+		Address: "Pokhara",
 	}
 
-	John := Person{
-		Name: "John",
-		Age:  21,
-	}
+	fmt.Println(yogendra.Name, yogendra.Age, yogendra.Address)
 
-	// print the struct
-	fmt.Println(Alex)
-	fmt.Println(John.Name, John.Age)
+	// Correct method call
+	fmt.Println(yogendra.GetName())
 }
