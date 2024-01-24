@@ -8,29 +8,25 @@ import (
 )
 
 func main() {
-	getFunction()
-	postFunction()
+	// getFunction()
+	// postFunction()
 	putFunction()
-	deleteFunction()
+	// deleteFunction()
 }
 
 // get function
 func getFunction() {
-	var url string = "https://jsonplaceholder.typicode.com/posts/1"
+	url := "https://jsonplaceholder.typicode.com/posts/1"
 	res, err := http.Get(url)
 	if err != nil {
-		fmt.Printf(err.Error())
-		panic(err.Error())
+		fmt.Printf("error making HTTP request: %v", err)
 	}
-
 	defer res.Body.Close()
 
-	// read the response body
+	// Read the response body
 	body, err := io.ReadAll(res.Body)
-
 	if err != nil {
-		fmt.Printf(err.Error())
-		return
+		fmt.Printf("error reading response body: %v", err)
 	}
 
 	fmt.Printf(string(body))
@@ -44,7 +40,7 @@ func postFunction() {
 
 	if err != nil {
 		fmt.Printf(err.Error())
-		panic(err.Error())
+		return
 	}
 
 	defer res.Body.Close()
@@ -68,7 +64,7 @@ func putFunction() {
 
 	if err != nil {
 		fmt.Printf(err.Error())
-		panic(err.Error())
+		return
 	}
 
 	req.Header.Set("Content-Type", "application/json; charset=UTF-8")
@@ -78,13 +74,18 @@ func putFunction() {
 
 	if err != nil {
 		fmt.Printf(err.Error())
-		panic(err.Error())
+		return
 	}
 
 	defer res.Body.Close()
 
 	// read the response body
 	body, err := io.ReadAll(res.Body)
+
+	if err != nil {
+		fmt.Printf(err.Error())
+		return
+	}
 
 	if err != nil {
 		fmt.Printf(err.Error())
